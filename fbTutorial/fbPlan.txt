@@ -1,0 +1,5 @@
+#Don't look at the code first try to build a blog from scratch, with react
+
+
+
+
