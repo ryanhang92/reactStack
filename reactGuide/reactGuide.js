@@ -1,44 +1,8 @@
-#Create basic web server environment
-
-1) Follow basic setup here, routes will be more advanced later
-	https://github.com/reactjs/react-tutorial/blob/master/server.js
-2) Make sure to have a package.json to install the dependencies
-3) Point the server to a html file:
-	app.use('/', express.static(path.join(__dirname, 'public')));
-
-#Loading React and Dependencies
-
-1) In the right html file make sure to link to the react library cdn
-  <head>
-    <meta charset="utf-8" />
-    <title>React Tutorial</title>
-    <script src="https://unpkg.com/react@15.3.1/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
-  </head>
-
-2) In the body of the html file you are importing a js file,
-this will import react code
-
-  <body>
-    <div id="content"></div>
-    <script type="text/babel" src="scripts/example.js"></script>
-    <script type="text/babel">
-      // To get started with this tutorial running your own code, simply remove
-      // the script tag loading scripts/example.js and start writing code here.
-    </script>
-  </body>
-
-
-3) <WebPack and Other Automation Helpers ???>
-
-
 #Creating Components - Start modifying the imported script in scripts/example.js
 
-1) Component Declaration Pattern #1
+[Declaring Components]
 
+<Component Declaration Pattern #1>
 import { PropTypes, Componet } from 'react'
 
 class LeaderEntry extends Component {
@@ -61,13 +25,13 @@ class LeaderEntry extends Component {
   }
 };
 
+#Prop Type checking is good
 LeaderEntry.propTypes = {
   name: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired
 };
 
-2) Component Declaration Pattern #2
-
+<Component Declaration Pattern #2>
 var CommentBox = React.createClass({
   render: function() {
     return (
@@ -79,31 +43,22 @@ var CommentBox = React.createClass({
 });
 
 
-***<For BOTH Patterns the components needs to be rendered with this element>
-This hooks onto a div id element
-
+***<For BOTH Patterns the components needs to be rendered an html element, which hooks onto a div=id element>***
 ReactDOM.render(
   <CommentBox />,
   document.getElementById('content')
 );
 
 a) This could either be one master component on an single page
-b) Or there could be multiple versions of these contected to various elems
+b) Or there could be multiple versions of these connected with various components
 
+[Wiring Components Togeather]
 
-*Providing components with an inital state
+#1 Passing data from parent component to child component
 
+<Basic Example>
 
-
-
-#Connecting Components Togeather 
-
-1) Rendering Components within other Components and passing information
-	from parent to child
-
-a) Most Basic Pattern
-
-# Loading the parent component with data 
+1) Load data by setting a variable inside the tag
 var CommentList = React.createClass({
   render: function() {
     return (
@@ -115,7 +70,7 @@ var CommentList = React.createClass({
   }
 });
 
-# Passing the data onto the children
+2) Render the passed in data by referencing the prop
 var Comment = React.createClass({
   render: function() {
     return (
@@ -129,12 +84,51 @@ var Comment = React.createClass({
   }
 });
 
-2) Passing information from Child to Parent
+<Passing in stream of data>
+
+1) Add data to root component
+ReactDOM.render(
+  <CommentBox data={data} />,
+  document.getElementById('content')
+);
+
+2) Pass it to the right level
+var CommentBox = React.createClass({
+  render: function() {
+    return (
+      <div className="commentBox">
+        <h1>Comments</h1>
+        <CommentList data={this.props.data} />
+        <CommentForm />
+      </div>
+    );
+  }
+});
+
+3) Render it with mapping
+var CommentList = React.createClass({
+  render: function() {
+    var commentNodes = this.props.data.map(function(comment) {
+      return (
+        <Comment author={comment.author} key={comment.id}>
+          {comment.text}
+        </Comment>
+      );
+    });
+    return (
+      <div className="commentList">
+        {commentNodes}
+      </div>
+    );
+  }
+});
+
+
+#2 Passing data from child component to parent component
 
 
 
 
-#Dynamic Updating Patterns 
 
 
 
@@ -144,8 +138,6 @@ var Comment = React.createClass({
 
 
 
-
-#Advanced patterns such as nesting
 
 
 
