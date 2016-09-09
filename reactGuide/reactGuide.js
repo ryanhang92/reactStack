@@ -91,16 +91,67 @@ a) This could either be one master component on an single page
 b) Or there could be multiple versions of these contected to various elems
 
 
+*Providing components with an inital state
+
+
+
+
 #Connecting Components Togeather 
 
 1) Rendering Components within other Components and passing information
 	from parent to child
 
+a) Most Basic Pattern
+
+# Loading the parent component with data 
+var CommentList = React.createClass({
+  render: function() {
+    return (
+      <div className="commentList">
+        <Comment author="Pete Hunt">This is one comment</Comment>
+        <Comment author="Jordan Walke">This is *another* comment</Comment>
+      </div>
+    );
+  }
+});
+
+# Passing the data onto the children
+var Comment = React.createClass({
+  render: function() {
+    return (
+      <div className="comment">
+        <h2 className="commentAuthor">
+          {this.props.author}
+        </h2>
+        {this.props.children}
+      </div>
+    );
+  }
+});
 
 2) Passing information from Child to Parent
 
 
-<Advanced Dynamic Patterns>
+
+
+#Dynamic Updating Patterns 
+
+
+
+
+
+
+
+
+
+
+#Advanced patterns such as nesting
+
+
+
+
+
+
 
 
 
