@@ -1,6 +1,6 @@
-#Creating Components - Start modifying the imported script in scripts/example.js
+Start modifying the javascript file that your imported in your target HTML file
 
-[Declaring Components]
+********************[Declaring Components]******************************
 
 <Component Declaration Pattern #1>
 import { PropTypes, Componet } from 'react'
@@ -9,7 +9,6 @@ class LeaderEntry extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const {name, points} = this.props
     return (
@@ -25,8 +24,7 @@ class LeaderEntry extends Component {
   }
 };
 
-#Prop Type checking is good
-LeaderEntry.propTypes = {
+LeaderEntry.propTypes = { (PropType checking is good)
   name: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired
 };
@@ -42,23 +40,21 @@ var CommentBox = React.createClass({
   }
 });
 
-
 ***<For BOTH Patterns the components needs to be rendered an html element, which hooks onto a div=id element>***
 ReactDOM.render(
   <CommentBox />,
   document.getElementById('content')
 );
 
-a) This could either be one master component on an single page
-b) Or there could be multiple versions of these connected with various components
+#This master react object is generally assocaited with a single HTML object
 
-[Wiring Components Togeather]
+*******************[Wiring Components Togeather]*************************
+(Fundamental Parent to Child data flow)
 
-#1 Passing data from parent component to child component
+[1 Passing data from parent component to child component]
 
 <Basic Example>
-
-1) Load data by setting a variable inside the tag
+1) Load data as a prop attribute by setting data within a tag
 var CommentList = React.createClass({
   render: function() {
     return (
@@ -70,7 +66,7 @@ var CommentList = React.createClass({
   }
 });
 
-2) Render the passed in data by referencing the prop
+2) Render the passed in data by referencing the prop, this is data value
 var Comment = React.createClass({
   render: function() {
     return (
@@ -84,8 +80,7 @@ var Comment = React.createClass({
   }
 });
 
-<Passing in stream of data>
-
+<Stream of Data example>
 1) Add data to root component
 ReactDOM.render(
   <CommentBox data={data} />,
@@ -124,27 +119,11 @@ var CommentList = React.createClass({
 });
 
 
-#2 Passing data from child component to parent component
+#Additional Notes
+using this.props.children as opposed to explictly defining all prop imports can be helpful
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[Passing data from Child Component is covered in the update react guide, because its a pattern that is only logically
+need if the react component is responsive to user input]
 
 
 

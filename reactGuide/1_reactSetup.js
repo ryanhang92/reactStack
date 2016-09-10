@@ -1,14 +1,15 @@
- #Create basic web server environment
+#How to load React and or Redux into your application
+
+[1] Create basic web server environment
+   a) Follow basic setup here, routes will be more advanced later
+     https://github.com/reactjs/react-tutorial/blob/master/server.js
+   b) Make sure to have a package.json to install the dependencies
+   c) Point the server to a html file:
+     app.use('/', express.static(path.join(__dirname, 'public')));
  
- 1) Follow basic setup here, routes will be more advanced later
-   https://github.com/reactjs/react-tutorial/blob/master/server.js
- 2) Make sure to have a package.json to install the dependencies
- 3) Point the server to a html file:
-   app.use('/', express.static(path.join(__dirname, 'public')));
- 
- #Loading React and Dependencies
- 
- 1) In the right html file make sure to link to the react library cdn 
+[2] Load React Dependencies 
+
+ a) In the target html file make sure to link to the react library cdn, or import it locally
    <head>
      <meta charset="utf-8" />
      <title>React Tutorial</title>
@@ -18,10 +19,9 @@
      <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
      <script src="https://unpkg.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
    </head>
- 
- 2) In the body of the html file you are importing a js file,
- this will import react code
- 
+
+
+ b)  In your target html file import your react code into a target html object
    <body>
      <div id="content"></div>
      <script type="text/babel" src="scripts/example.js"></script>
@@ -31,8 +31,13 @@
      </script>
    </body>
 
-	*Now start writing react code in scripts/example.js!!
+  c) Time to start writing you react code now!
  
- 
- 3) <WebPack and Other Automation Helpers ???>
+#Loading Redux and other services and Dependencies with Webpack
+
+[1] Webpack Setup
+
+
+
+[2] Gulp Setup / Nodemon?
 

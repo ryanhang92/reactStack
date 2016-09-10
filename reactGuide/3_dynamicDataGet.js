@@ -4,16 +4,16 @@
 
 1) Setting up the framework and flow for the dynamic data
 
-<1 Pass in a route to ping>
+<1 Pass in a route to ping or a dynamic source of data into the root component>
 ReactDOM.render(
   <CommentBox url="/api/comments" />,
   document.getElementById('content')
 );
 
 <2 Declare a state for a component with getInitalState>
-	*The initial declaration should match the structure of the data
+	*The initial declaration should match the structure of the data, having a state means its a dynamic component
 
-<3 Pass your state in as a prop for other components to consume>
+<3 Pass your state in as a prop for other components to consume, these are not functionally dynamic props>
 var CommentBox = React.createClass({
   getInitialState: function() {
     return {data: []};
@@ -40,7 +40,7 @@ var CommentBox = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({data: data});
+        this.setState({data: data}); #!!!!The Key step is here, this is what changes the state of the component
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -69,25 +69,4 @@ ReactDOM.render(
   <CommentBox url="/api/comments" pollInterval={2000} />,
   document.getElementById('content')
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,12 +1,14 @@
-#Once the receiving dynmaic data flow is set up, this is how you
-trigger a change in the framework and/or update data
+#Once the receiving dynmaic data flow is set up, this is how you trigger a change in the framework and/or update data from a component
 
+(Creating a Dynamic compoent within itself, must keep track of internal changes inorder to send the changes somewhere else)
 <1 Create a component form and/or event listener to trigger a data update>
+  #This is how to create dynamic interaction within a single component, which is a pre-req for sending that state to the parent component
 	a) Need to declare inital state
 	b) Need functions to handle changes for the fields
-	c) Need function to handle the submit and change  
+	c) Need functions to handle the submit and change  
 	d) Need to render the component
 
+  <Basic form and click examples>
 	var CommentForm = React.createClass({
 		getInitialState: function() {
 			return {author: '', text: ''};
@@ -48,11 +50,13 @@ trigger a change in the framework and/or update data
 		}
 	});
 
+  <Click, Mouse, Key Example>
 
+(Setting up a parent component to listen to a dynamic component)
 <2 In the parent object that should be updated based on its child components update>
-	a) Create a callback function that the child can call 
-		-This callback function should take in a state data as a parameter
-		-And update a data store, or the parent component with that data
+	a) Create a callback function that the right child can call (handleCommentSubmit or handleSomeEvent)
+		-This callback function should take in a state data as a parameter this is because it will
+		-Update a data store, or the parent component with that data
 
 	#Example)
 	var CommentBox = React.createClass({
@@ -75,9 +79,9 @@ trigger a change in the framework and/or update data
 			return {data: []};
 		},
 
-	b) Pass this callback function to the child component based on props
+	b) Pass this callback function to the child component based on props, to is to be used
 
-	(In the parent component)*
+	(In the parent component) pass it down*
 		render: function() {
 			return (
 				<div className="commentBox">
@@ -88,7 +92,7 @@ trigger a change in the framework and/or update data
 			);
 		}
 
-	(In the child component)*
+	(In the child component) call it when it needs to be called*
 	 handleSubmit: function(e) {
 			e.preventDefault();
 			var author = this.state.author.trim();
@@ -109,3 +113,4 @@ trigger a change in the framework and/or update data
 						onChange={this.handleAuthorChange}
 					/>
 
+ #This should re-render the data
