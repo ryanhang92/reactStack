@@ -2,7 +2,7 @@
 
 ***How to Recieve Data***
 
-1) Setting up the framework and flow for the dynamic data
+[1 Setting up the framework and flow for the dynamic data]
 
 <1 Pass in a route to ping or a dynamic source of data into the root component>
 ReactDOM.render(
@@ -29,10 +29,12 @@ var CommentBox = React.createClass({
   }
 });
 
-2) Updating the data in the state
+[2 Updating the data in the state]
 
-<1 create and abstract functions/functions to load data from a source>
+<1 declare/abstract functions/functions to load data from a source>
 <2 initalize a cycle at the start of the component to poll the data
+
+ex)
 var CommentBox = React.createClass({
   loadCommentsFromServer: function() {
     $.ajax({
@@ -70,3 +72,5 @@ ReactDOM.render(
   document.getElementById('content')
 );
 
+
+#Data is now re-rendered in an interval and kept fresh!

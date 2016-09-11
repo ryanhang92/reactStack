@@ -7,7 +7,7 @@
    c) Point the server to a html file:
      app.use('/', express.static(path.join(__dirname, 'public')));
  
-[2] Load React Dependencies 
+[2] Load React into your HTML file
 
  a) In the target html file make sure to link to the react library cdn, or import it locally
    <head>
@@ -21,7 +21,7 @@
    </head>
 
 
- b)  In your target html file import your react code into a target html object
+ b) In your target html file import your react code into a target html object
    <body>
      <div id="content"></div>
      <script type="text/babel" src="scripts/example.js"></script>
@@ -33,11 +33,40 @@
 
   c) Time to start writing you react code now!
  
-#Loading Redux and other services and Dependencies with Webpack
+#######Loading Redux and other services and Dependencies with Webpack############
 
 [1] Webpack Setup
+	1) npm install webpack -g
+	2) create a webpack config file
 
+		module.exports = {
+				entry: "./entry.js", <- Name of the JS file that compiles into bundle.js
+				output: {
+						path: __dirname,
+						filename: "bundle.js" <- Name of file hat is imported into your html
+				},
+				module: {
+						loaders: [
+								{ test: /\.css$/, loader: "style!css" }
+						]
+				}
+		};
+
+	3) webpack
+	4) In your target html file, reference bundle JS is your source
+		It compiles all of the dependencies to bundle js
+
+	5) Run and develop
+		npm install webpack-dev-server -g	
+		webpack-dev-server --progress --colors	
+		*visit localhost:8080/webpack-dev-server/bundle to see your results
 
 
 [2] Gulp Setup / Nodemon?
+	1) create a gulpfile.js <- Review kloudless one for formatting
+
+	2) gulp, runs the scritps
+
+	3) Do nodemon, instead of node to reload server after changes
+
 
