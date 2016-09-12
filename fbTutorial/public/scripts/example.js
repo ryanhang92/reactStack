@@ -1,4 +1,5 @@
 
+
 var CommentBox = React.createClass({
   render: function() {
     return (
@@ -31,6 +32,13 @@ var CommentForm = React.createClass({
     );
   }
 });
+
+
+//Mock Data to add first
+var data = [
+  {id: 1, author: "Pete Hunt", text: "This is one comment"},
+  {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
+];
 
 
 ReactDOM.render(
