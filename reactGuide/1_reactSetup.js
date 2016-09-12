@@ -37,8 +37,9 @@
 
 [1] Webpack Setup
 	1) npm install webpack -g
+		a) Add the necessary components and npm install into your package.json
 	2) create a webpack config file
-
+		ex)
 		module.exports = {
 				entry: "./entry.js", <- Name of the JS file that compiles into bundle.js
 				output: {
@@ -52,9 +53,32 @@
 				}
 		};
 
+		ex)
+		module.exports = {
+		entry: './rpgGame/gameReact.js',
+		output: {
+			path: __dirname,
+			filename: 'bundle.js'
+		},
+		module: {
+			loaders: [
+				{ 
+					test: /\.css$/,
+					loader: "style-loader!css-loader"
+				},
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					loader: 'babel',
+					query: { presets: [ 'es2015', 'react' ] }
+				}
+			]
+		}
+	};
+
 	3) webpack
 	4) In your target html file, reference bundle JS is your source
-		It compiles all of the dependencies to bundle js
+		It compiles all of the dependencies to bundle.js
 
 	5) Run and develop
 		npm install webpack-dev-server -g	
