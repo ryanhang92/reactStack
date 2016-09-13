@@ -29,7 +29,10 @@
        // To get started with this tutorial running your own code, simply remove
        // the script tag loading scripts/example.js and start writing code here.
      </script>
-   </body>
+     </body>
+
+    c) Potential Issues is How to get JSX to be read, need babel
+    How to load babel into the servers
 
   c) Time to start writing you react code now!
  
