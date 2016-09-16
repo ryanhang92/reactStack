@@ -1,17 +1,23 @@
-//Comment Box
+//Comment Box Attach this to an Article to see the comments
 
 var CommentBox = React.createClass({
-  render: function() {
-    return (
-      <div className="commentBox">
-        Hello, world! I am a CommentBox. Here are my kids
-				<CommentList />
-				<CommentForm />
-      </div>
-    );
-  }
-});
+    loadDataFromServer: function() {
 
+
+    },
+    getInitalState: function() {
+        return {data: []}
+    },
+    render: function() {
+        return (
+          <div className="commentBox">
+            Hello, world! I am a CommentBox. Here are my kids
+                <CommentList />
+                <CommentForm />
+          </div>
+        );
+    }
+});
 
 var CommentList = React.createClass({
   render: function() {
@@ -33,7 +39,6 @@ var CommentForm = React.createClass({
   }
 });
 
-
 //Mock Data to add first
 var data = [
   {id: 1, author: "Pete Hunt", text: "This is one comment"},
@@ -45,3 +50,4 @@ ReactDOM.render(
   <CommentBox />,
   document.getElementById('content')
 );
+

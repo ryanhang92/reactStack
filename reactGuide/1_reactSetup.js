@@ -20,7 +20,6 @@
      <script src="https://unpkg.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
    </head>
 
-
  b) In your target html file import your react code into a target html object
    <body>
      <div id="content"></div>
@@ -31,10 +30,13 @@
      </script>
      </body>
 
-    c) Potential Issues is How to get JSX to be read, need babel
-    How to load babel into the servers
+ c) Browser loading issue. The browser can only read vanilla javascript, html, css, if you write in JSX or es6 you 
+    need to find some way to transpile this into regular JS, we can use bable to do this 
+    a) We can use Webpack to automate transpiling into our target JS file
+    b) We can use Gulp to automate transpiling into our target JS file 
+    c) 
 
-  c) Time to start writing you react code now!
+ ***Time to start writing you react code now!
  
 #######Loading Redux and other services and Dependencies with Webpack############
 
