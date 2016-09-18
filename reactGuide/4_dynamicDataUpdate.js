@@ -148,4 +148,4 @@
 						onChange={this.handleAuthorChange}
 					/>
 
-	#Data is now re-rendered based on an even and kept fresh!
+	#Data is now re-rendered based on an even and kept fresh! Based on an even, not just automatic, only two types!

@@ -71,7 +71,7 @@ var CommentBox = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
-  componentDidMount: function() {
+  componentDidMount: function() {   //<-- Initalize a listener at some polling interval 
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
