@@ -8,7 +8,8 @@
 	c) Need functions to handle the submit and change  
 	d) Need to render the component
 
-  <Basic form and click examples>
+	ex1) 
+  	<Basic form and click examples>
 	var CommentForm = React.createClass({
 		getInitialState: function() {
 			return {author: '', text: ''};
@@ -49,6 +50,32 @@
 			);
 		}
 	});
+
+	ex2) 
+	<Basic Field Change>
+	var HelloUser = React.createClass({
+	  getInitialState: function(){
+	    return {
+	      username: '@tylermcginnis33'
+	    }
+	  },
+	  handleChange: function(e){
+	    this.setState({
+	      username: e.target.value
+	    });
+	  },
+	  render: function(){
+	    return (
+	      <div>
+	        Hello {this.state.username} <br />
+	        Change Name: <input type="text" value={this.state.username} onChange={this.handleChange} />
+	      </div>
+	    )
+	  }
+	});
+
+
+
 
   <Click, Mouse, Key Example>
 

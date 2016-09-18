@@ -14,6 +14,8 @@ ReactDOM.render(
 	*The initial declaration should match the structure of the data, having a state means its a dynamic component
 
 <3 Pass your state in as a prop for other components to consume, these are not functionally dynamic props>
+
+ex 1)
 var CommentBox = React.createClass({
   getInitialState: function() {
     return {data: []};
@@ -28,6 +30,23 @@ var CommentBox = React.createClass({
     );
   }
 });
+
+ex 2) 
+var HelloUser = React.createClass({
+  getInitialState: function(){
+    return {
+      username: '@tylermcginnis33'
+    }
+  },
+  render: function(){
+    return (
+      <div>
+        Hello {this.state.username}
+      </div>
+    )
+  }
+});
+
 
 [2 Updating the data in the state]
 
