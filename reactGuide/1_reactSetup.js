@@ -9,6 +9,7 @@
  
 [2] Load React/JS File into your HTML file
 
+<facebook example>
  a) In the target html file make sure to link to the react library cdn, or import it locally
    <head>
      <meta charset="utf-8" />
@@ -29,6 +30,19 @@
        // the script tag loading scripts/example.js and start writing code here.
      </script>
      </body>
+
+<Mcginnis Example>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <title>My App</title>
+	  <link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+	  <div id="app"></div>
+	  <script src="index_bundle.js"></script>
+	</html>
 
 [3] Browser loading issue. The browser can only read vanilla javascript, html, css, if you write in JSX or es6 you 
     need to find some way to transpile this into regular JS, we can use bable to do this 
@@ -142,6 +156,11 @@ npm install — save-dev babel-core babel-loader babel-preset-react
 3) webpack executes the script
 
 
+<Advanced Production Webpack Example>
+
+
+
+
 <Using Gulp to turn React -> Javascript>
 1) Install the dependencies
 	npm init
@@ -160,7 +179,7 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var streamify = require('gulp-streamify');
-var path = {
+var path = { <-- Decalre Paths for tasks 
   HTML: 'src/index.html',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
@@ -169,31 +188,40 @@ var path = {
   DEST_SRC: 'dist/src',
   ENTRY_POINT: './src/js/App.js'
 };
-gulp.task('copy', function(){
+
+(transform excluded in browserify version)
+gulp.task('transform', function(){ <-- This converts jsx into regular js in the DEST folder
+  gulp.src(path.JS)
+    .pipe(react())
+    .pipe(gulp.dest(path.DEST_SRC));
+});
+
+gulp.task('copy', function(){ <--- Copy built files to production location
   gulp.src(path.HTML)
     .pipe(gulp.dest(path.DEST));
 });
-gulp.task('watch', function() {
+
+gulp.task('watch', function() { <-- Watch for changes in html or js files and update code in dist
   gulp.watch(path.HTML, ['copy']);
-var watcher  = watchify(browserify({
+var watcher  = watchify(browserify({ <-- Dont update everything saves time
     entries: [path.ENTRY_POINT],
-    transform: [reactify],
-    debug: true,
-    cache: {}, packageCache: {}, fullPaths: true
+    transform: [reactify], <-- Transforms into regular js
+    debug: true, <-- references correct map for line of code
+    cache: {}, packageCache: {}, fullPaths: true <-- required for watchify
   }));
 return watcher.on('update', function () {
     watcher.bundle()
-      .pipe(source(path.OUT))
+      .pipe(source(path.OUT)) <--watch for update to these components
       .pipe(gulp.dest(path.DEST_SRC))
       console.log('Updated');
   })
     .bundle()
-    .pipe(source(path.OUT))
+    .pipe(source(path.OUT))  <-- Bundle all components togeather and pipe to src
     .pipe(gulp.dest(path.DEST_SRC));
 });
-gulp.task('build', function(){
-  browserify({
-    entries: [path.ENTRY_POINT],
+gulp.task('build', function(){  <- Concatnate, minify then ouput to build build location
+  browserify({ 
+    entries: [path.ENTRY_POINT], <--This does watch, but without the constant updates, min and send to prod folder
     transform: [reactify],
   })
     .bundle()
@@ -201,15 +229,15 @@ gulp.task('build', function(){
     .pipe(streamify(uglify(path.MINIFIED_OUT)))
     .pipe(gulp.dest(path.DEST_BUILD));
 });
-gulp.task('replaceHTML', function(){
+gulp.task('replaceHTML', function(){  <-- Replaces build html to take in build js file, reaplce content
   gulp.src(path.HTML)
     .pipe(htmlreplace({
       'js': 'build/' + path.MINIFIED_OUT
     }))
     .pipe(gulp.dest(path.DEST));
 });
-gulp.task('production', ['replaceHTML', 'build']);
-gulp.task('default', ['watch']);
+gulp.task('production', ['replaceHTML', 'build']); <-- saying "gulp produciton" runs these these tasks
+gulp.task('default', ['watch']); <-- Watch is initalized anytime gulp is called
 
 3)
 

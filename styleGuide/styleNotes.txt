@@ -1,0 +1,167 @@
+
+<!---- Wiki Viewer CSS Lessons  -->
+#How to use a button as a link
+
+<form method="get" action="/page2">
+    <button type="submit">Continue</button>
+</form>
+
+
+#How to place buttons side by side 
+
+<button id="search" class="btn btn-default" ng-click="wiki.send(wiki)">Search Wikipedia!</button>
+<form id="random" method="get" action="http://en.wikipedia.org/wiki/Special:Random">
+  <button id="randomButton" type="submit" class="btn btn-default">Random Page</button>
+</form>
+
+#button1, #button2 {
+  display: inline-block;
+}
+
+The error had here was that when i gave the nested a button an id and set inline block it did not work
+have truley adjacent non nested items, of the shame class all have inline block, and they will be inline 
+
+#How to expand the search bar size 
+<input class="search">
+and CSS style the search
+width: 20%;
+text-align: center;
+
+#How to make rounded corners for the radius
+
+You set the border radius of the div in the css as 
+border-radius: 25px;
+
+#How to move a div Vertically up and down
+
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+*Change the top percentage to anything you want
+
+#How to conditionally move things up or down to make for search results
+1. I used ng-class
+2. and set my default class to be the middle with
+.searchOn {
+  background-color: green;
+  margin-top: 15%;
+}
+
+#How to Horizontally compress a search box, and center it with
+width: 50%;
+margin: 0 auto;
+
+#How to color the margin area
+If your margin is set on the body, then setting the background color of the html tag should color the margin area
+
+html { background-color: black; }
+body { margin:50px; background-color: white; }#
+
+#How to counteract the left margin bias I see with ng repeat
+I set the margin-left and margin-right of the ng-repeated body to like 5%
+
+
+
+<!-- Twitch Feed CSS Lesson -->
+
+#How to steam data with angular
+        <!-- The frame for each interaction is set here, I can change the col based on scope ng-class="{true: 'online', false: 'offline'}[status]"-->
+        <div class="streamPanel" ng-style="getStyle({{data.data.stream}})" >
+
+          <div class="icon" ng-show="{{data.data.stream.channel.logo}}">
+
+
+#How to apply CSS Styles condiitonally
+<!-- add the class 'text-success' if the variable 'awesome' is true -->
+<div ng-class="{ 'text-success': awesome, 'text-large': giant }">
+
+Only caling the function makes it specific to the data frame, else its linked to something global
+<div class="streamPanel" ng-class="{true: 'online', false: 'offline'}[status]" ng-style="getStyle({{data.data.stream}})" >
+<div class="searchBox" ng-class="{'searchOn' : searchStatus}">
+
+
+#How to divide a page into two half
+<div id="container" style="width:100%;">                                   
+  <div id="left" style="float:left; width:50%;"> This is left panel </div>                     
+  <div id="right" style="float:right; width:50%;"> This is right panel </div>                   
+</div> 
+
+#How to split it into 3 parts, 4 would be too much
+You have a skinny Middle column, and then the background will be a different color
+this way it looks like it is split up into 3 when it is not
+
+#How to create inner space of the same color
+padding: 30px;
+
+#How to get rid of the common place left margin? 
+set margin-left to be 0
+
+#How to move a div vertically up and down?
+Parent wrapper be relative
+target wrapper be absolute
+change the top: percent
+
+#How to do this horizontally
+transform: translate(-50%)
+left: (-50%), works well
+
+#How to conditionally display a link?
+Through the use of ng-show()
+<td> <a ng-show="{{data.data.stream.channel.url}}" href="{{data.data.stream.channel.url}}">Go to Stream</a></td>
+
+#How to get rid of the left bias in ng-repeated object?
+This issue is caused by the fact the ng-repeat is a ul thing 
+To fix this switch this over to li on the ng repeat and to get rid of the annoy bullets do 
+
+li {
+    list-style-type: none;
+}
+in the css
+
+#How to create spacing between inner divs and outer divs we should do this 
+  margin-bottom: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
+
+#How to horitzontally center and not vertically center?
+  Sometimes you will have to take off one of the parameters, in the transform and left padding
+  top: 10%;
+  left: 50%;
+  /* Take off the right parameter to see a result */
+  margin: 0;
+  transform: translate(-50%);
+  text-align: center;
+
+#If text input is a number it only takes numbers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

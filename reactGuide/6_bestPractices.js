@@ -7,6 +7,10 @@
  2) With Redux 
 
 
+#How to approach Navigation within an App
+
+
+
 #How to approaching loading intial data, especiall if it is large
 	
 	(albert recommended using some type of switch mechanism???)

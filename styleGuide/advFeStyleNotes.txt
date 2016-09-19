@@ -1,0 +1,327 @@
+<!-- JS Calculator Style -->
+#How to make sure things are exactly in rows and cols, use a table!
+<table>
+  <tr>
+    <td>
+    <td>
+  <tr>
+<table>
+
+
+#How to shift a table to the center when it is currently left aligned 
+
+http://stackoverflow.com/questions/7059394/how-to-position-a-table-at-the-center-of-div-horizontally-vertically
+
+table {
+  margin: 0 auto;
+}
+
+#How to expand table width size to keep things uniform
+
+td {
+  width: 50px;
+  height: 50px;
+}
+
+#How do we get things next to each other?
+We can use a span, or a table to enforce this 
+
+
+Add Spacing between the cell to keep things uniform
+even when text size is variable
+
+#How to get the div to wrap just around the container so that the screen
+#can be created
+
+#How to just add more space for the screen, but keep numbers at the bottom
+padding-top: 40px
+
+#How to stick a screen ontop of the calculator body, and have it be the same width
+
+1. Put one ontop of the other as a div 
+2. Make the widths the same %
+3. Center it with margin: 0 auto;
+
+#How to get rid of the lines and outlines of the calculator
+
+1. set the .buttons background color to orange
+
+
+#I am not quite sure why there is white space on the top
+I fixed it by setting the body background color to black
+
+
+#I am displaying an array, how do you strip the array brackets [, ], , and commans 
+#from the display
+I did it by {{master.join('')}}, and there was an automatic filter
+
+#How do you get things to be next to each other, you can use a <span> tag
+
+<!-- Javascript timer -->
+
+#How to center the timer Shell app in the middle of the page
+1. make sure the parent wrapper spans the entire page, height 100vh, width is 100% (not vh), position: relative
+On the item itself
+1. position absolute
+2. top: 50%
+3. left: 50%
+4 transform: translate(-50%, -50%)
+
+#How to grow the div item in size?"
+1. Set the height and width values
+
+
+#How to send the time Internals in the middle of the shell
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  text-align: center;
+
+#How to shrink the width of a screen and then center it
+width: 40%, margin: 0 auto;
+
+#How to expane the verticle height of the screen?
+I wrapped the {{ displayText }} in <h1> and </h1> and made the text bigger 
+its streched to ti
+
+#??Could we use ng-class to swtich between input and display based on a click?
+
+
+#How to set a default message in the input field and have it clear on a click?
+<span class="inputPanel">
+  <p> Set Custom Time </p>
+  <input id="customTime" type="text" ng-model="customTime"
+  ng-init="customTime='Enter Custom Time'"
+  ng-click="customTime = null">
+  </br/>
+  <button ng-click="setTimer(timer)"> Set timer </button>
+</span>
+
+#How to add spacing between buttons, set the button margins
+  #How to add vertical spacing
+    I set the margin-bottom: 5px
+
+#How to move something up and down within nested Divs
+1. The parent is abolsute, 
+2. target is relative, set 
+top 30%
+left 50%
+transform translate(-50%, -50%)
+tex-align center
+
+
+
+<!-- Tic Tac Toe -->
+
+#How to lock eveything inline
+use a html table and not a div
+
+  <!-- I had board.State throwing a file now found error and parse syntax error -->
+  <!-- When calling a function there is no need to put board state in quotes -->
+  <!-- I should create a function for ng style, etc, maybe a directive? -->
+  <!-- spelled wrong it is ng-disable -->
+  <!-- <img ng-src={{displayIcon()}}/> -->
+
+
+#Centering the Board in the middle of the page
+Parent position relative, target, position abosoute, Top 50%, Translate Y 50%, margin 0 auto
+
+#Place the Buttons under the board, center it 
+-Add it to the div under the board;
+-text align center, actually centers the control panels with buttons
+
+#Set the Start Buttons next to each other, on the drop down
+-span Stack is not working
+*We should just try using, dipslay inlineblock, this here does not work
+
+        <div class="controlPanel">
+            <div class="dropdown">
+              <button id="start" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-disabled="!boardLock"> Start Game
+              <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <span><button ng-click="startPlayer()">You Move First</button></span> 
+                    <span><button ng-click="startCPU()">Computer Moves First</button></span>
+                  </li>
+                </ul>
+              </div>
+              <button id="reset" ng-click="resetBoard()">Restart Game</button>
+          </div>
+
+Maybe because they were in different div's how about place the buttons right next to 
+each other, this works
+            <div class="dropdown">
+              <button id="start" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-disabled="!boardLock"> Start Game
+              <span class="caret"></span></button>
+                <button id="reset" ng-click="resetBoard()">Restart Game</button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <span><button ng-click="startPlayer()">You Move First</button></span> 
+                    <span><button ng-click="startCPU()">Computer Moves First</button></span>
+                  </li>
+                </ul>
+              </div>
+
+
+#Align text ontop of a floating div, just center it in general
+-I just but the game prompt within gameBoard which text-align is centered
+-text align center in the body
+
+#create some space between the button panel and the game board
+-margin-top or padding top on the button panel
+
+#Have a centered floating block, with shorter border on each side
+.gamePrompt {
+  border: 1px solid;
+  margin: 0 auto;
+  width: 35%;
+}
+
+#How to center and re-size the background image 
+  #The error I should watch out for, i should user percents not fixec
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  /*
+  This was able to resize, the image correctly
+  background-size: contain;
+  overflow: hidden;
+  */
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+}
+
+
+There seems to be extra white space on the block
+<!-- Simon Game Styling -->
+
+#Center the game shell 
+1. wrapper-position relative, height 100vh, width 100%, 
+2. gameBoard-position absolute, top 50%, left 50%, transform: translate(-50%, -50%)
+
+#Get the buttons oriented correctly
+-The rows are crunched into columns as opposed to rows
+*When I removed display: inline-block, this all changed
+*Maybe I should separate by breaks?
+*Split up the divs into top, center, and buttom? and inline block,
+it does not work
+*The inline block should be cast to the objects directly and not the 
+parent which would go to the children
+
+**My issue at the end of the day i think was div class wrapped within a span class
+the splan class does not cover the button for some reason
+
+#How to hav multiple rows of items on top of each other
+-set the parent row=class, as table 
+-set the parent children of that row as table-cell
+-Start centering the elements 
+
+*An error that I am facing is that one row is above another row, not sure how to deal with that
+  -An error was that my div Id's were spelled wrong so the styles were not being applied to them
+
+  #How to center an element in its respective row
+    -I was able to center the top and bottom row buttons with margin: 0 auto, but the mid row elements have not moved yet-
+
+  #For some reason Top and bottom rows were defined, but my midRow was note defined/squished into the 3rd row
+   This was because, i did not give a width to the mid row 
+
+
+<New and current approach here >
+
+    <table id=display>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <div id="simonButton0" ng-click="playerActivate(0)" ng-disabled="playMode" class="simonButton">   
+            Button 0
+          </div> 
+        </td>
+      </tr>
+
+      <tr>
+          <td>
+            <div id="simonButton1" ng-click="playeractivate(1)" ng-disabled="playmode" class="simonButton">       
+                 button 1
+            </div>
+          </td>
+
+          <td>
+            <div id="controlPanel"> 
+              Control Panel
+                <button ng-click="startGame()"> Start Game </button>
+                <button ng-click="strictToggle()"> Strict Mode</button>
+                <button ng-click="hint()"> Hint </button>
+                <button> Reset </button>
+                <span class="stepDisplay">Step Count: {{stepCount}} </span>
+            </div>
+          </td>
+
+          <td>
+            <div ng-click="playerActivate(2)" ng-disabled="playMode" class="simonButton" id="simonButton2">
+                Button 2
+            </div>
+          </td>
+      </tr>
+
+      <tr>
+        <td>
+        </td>
+        <td>
+          <div class="simonButton" div id="simonButton3" ng-click="playerActivate(3)" ng-disabled="playMode">
+            Button 3
+          </div>
+        <td>
+      </tr>
+    </table>
+
+-use table Rows to create horizontal rows
+-User table cells, <td> to create columns, how to hortizontally, side to side shift table items?
+-One should actually try to add an extra cell, next to it in the row and it will actually move it to the 
+-center!
+
+
+The Row might actually work for signle objects, or 2 with float but with more objects it becomes much more complicated
+
+#How to get buttons in table and Center it 
+              <div id="controlPanel"> 
+                  Control Panel
+                  <br/>
+                  {{gameMessage}}
+                  <span class="stepDisplay">Step Count: {{stepCount}} </span>
+                  <table id="buttonPanel">
+                    <tr>
+                      <td> <button id="startButton" class="btn btn-danger" ng-click="startGame()"> Start </button> </td>
+                      <td> <button id="strictToggle" class="btn btn-danger" ng-click="strictToggle()"> Strict </button> </td>
+                    </tr>
+                    <tr>
+                      <td> <button id="hintButton" class="btn btn-danger" ng-click="hint()"> Hint </button> </td>
+                      <td> <button id="resetButton" class="btn btn-danger"  ng-click="resetGame()"> Reset </button> </td>
+                    </tr>
+                  </table>
+              </div
+
+#I was able to center the table with 
+margin: 0 auto; applied directly to the tableId
+
+#How to add spacing between the buttons
+button {
+  margin: 2px;
+}
+
+Margin is outside space and padding is inside space
+
+#Indictate Strict mode or not
+-May just print the true or false to the screen
+
+
+
+
+
+
+
+
+
+
